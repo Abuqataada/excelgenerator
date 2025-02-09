@@ -1,0 +1,11 @@
+What is the capital of France?
+A) Berlin
+B) Madrid
+C) Paris*
+D) Rome
+
+Which planet is known as the Red Planet?
+A) Earth
+B) Mars*
+C) Jupiter
+D) Saturn

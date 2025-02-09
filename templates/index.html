@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Safsims Excel file Generator</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        .container {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .card {
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .form-control, .btn {
+            border-radius: 8px;
+        }
+        .btn {
+            background-color: #007bff;
+            border: none;
+            transition: 0.3s;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+        .form-label {
+            font-weight: 600;
+            color: #333;
+        }
+        .instructions {
+            max-height: 400px;
+            overflow-y: auto;
+            padding: 15px;
+            background: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        footer {
+            background-color: #343a40;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            font-size: 14px;
+            margin-top: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="row w-100">
+            <!-- Form Section -->
+            <div class="col-md-6">
+                <div class="card">
+                    <h3 class="text-center mb-3">Safsims Excel file Generator</h3>
+                    <form action="/" method="post" enctype="multipart/form-data">
+                        <div class="mb-3">
+                            <label for="file" class="form-label">📄 Select Questions Text File:</label>
+                            <input type="file" name="file" class="form-control" accept=".txt" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="filename" class="form-label">📂 Enter Excel Filename:</label>
+                            <input type="text" name="filename" class="form-control" placeholder="Enter filename" required>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary w-100">Convert file</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Instructions Section -->
+            <div class="col-md-6 mt-4 mt-md-0">
+                <div class="instructions">
+                    <h5>📜 Instructions</h5>
+                    <p>Follow this format when creating your text file:</p>
+
+                    <ul>
+                        <li>Each question starts on a <b>new line</b>.</li>
+                        <li>Provide exactly <b>four options</b> (A, B, C, D).</li>
+                        <li>Mark the correct answer with an <b>asterisk (*)</b>.</li>
+                        <li>Leave an <b>empty line</b> between questions.</li>
+                    </ul>
+
+                    <h6>✅ Correct Example:</h6>
+                    <pre>
+What is the capital of France?
+A) Berlin
+B) Madrid
+C) Paris*
+D) Rome
+
+Which planet is known as the Red Planet?
+A) Earth
+B) Mars*
+C) Jupiter
+D) Saturn
+                    </pre>
+
+                    <h6>❌ Incorrect Example:</h6>
+                    <pre>
+1)What is the capital of France? (Add a space between numbering and questions)
+(A))) Berlin (Wrong format, use A) instead)
+(B) Madrid
+(C) Paris* (Correct answer, but keep format consistent)
+(D) Rome
+                    </pre>
+
+                    <p>Ensure you <b>follow this format</b> to avoid errors. 🚀</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        &copy; <span id="year"></span> ABUQATAADA DIGITAL INC. All rights reserved.
+    </footer>
+
+    <script>
+        // Set the current year dynamically
+        document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
