@@ -46,6 +46,17 @@
             border-radius: 10px;
             box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
         }
+        .alert {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            color: white;
+            font-weight: bold;
+        }
+        .alert-success { background-color: #4CAF50; }
+        .alert-warning { background-color: #FFC107; }
+        .alert-danger  { background-color: #F44336; }
+
         footer {
             background-color: #343a40;
             color: white;
@@ -64,6 +75,18 @@
             <div class="col-md-6">
                 <div class="card">
                     <h3 class="text-center mb-3">Safsims Excel file Generator</h3>
+                    {% with messages = get_flashed_messages(with_categories=true) %}
+                        {% if messages %}
+                            <div class="flash-message">
+                                {% for category, message in messages %}
+                                    <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                                        {{ message }}
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    {% endwith %}
                     <form action="/" method="post" enctype="multipart/form-data">
                         <div class="mb-3">
                             <label for="file" class="form-label">📄 Select Questions Text File:</label>
@@ -129,6 +152,30 @@ D) Saturn
     </footer>
 
     <script>
+        function autoDownload(fileUrl) {
+            if (fileUrl) {
+                setTimeout(() => {
+                    window.location.href = fileUrl;
+                }, 2000);
+            }
+        }
+        
+        function hideFlashMessages() {
+            setTimeout(() => {
+                var flashes = document.getElementById("flash-message");
+                if (flashes) {
+                    flashes.style.display = "none";
+                }
+            }, 3000);
+        }
+        
+        window.onload = function() {
+            hideFlashMessages();
+            {% if auto_download %}
+                autoDownload("{{ file_url }}");
+            {% endif %}
+        };
+
         // Set the current year dynamically
         document.getElementById("year").textContent = new Date().getFullYear();
     </script>
