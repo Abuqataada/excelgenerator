@@ -46,8 +46,8 @@ def parse_mcqs(file_content):
             option_text = option_pattern.sub("", line).strip()  # Remove option prefix
             if option_text.endswith("*"):  # Identify correct answer
                 correct_option = option_text[:-1].strip()  # Remove '*' from correct option
-
-            options[chr(65 + len(options))] = re.sub(r"\*$", "", option_text)  # Store cleaned option
+            else:
+                options[chr(65 + len(options))] = option_text  # Only add non-correct options. Store cleaned option
 
     # Save the last question if any
     if question:
